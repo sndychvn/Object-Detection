@@ -1,0 +1,7 @@
+venv
+.DS_Store
+.idea
+videos
+images
+*.mp4
+yolo-coco

@@ -1,0 +1,4 @@
+## The following requirements were added by pip freeze:
+imutils==0.5.2
+numpy==1.15.4
+opencv-python==3.4.4.19
