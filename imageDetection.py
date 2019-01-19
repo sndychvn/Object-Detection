@@ -110,7 +110,8 @@ if len(idxs) > 0:
         text = "{}: {:.4f}".format(LABELS[classIDs[i]], confidences[i])
         cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX,
                     0.5, color, 2)
-
+        final_classID = classIDs
 # show the output image
 cv2.imshow("Image", image)
 cv2.waitKey(0)
+print(final_classID)
