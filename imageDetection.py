@@ -3,6 +3,7 @@ import cv2
 import os
 import numpy as np
 import time
+from output_config import Count
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required=True, help="Path to the image")
@@ -13,7 +14,7 @@ args = vars(ap.parse_args())
 
 image = cv2.imread(args["image"])
 
-cv2.imshow("image", image)
+#cv2.imshow("image", image)
 # cv2.waitKey(0)
 
 # load the COCO class labels our YOLO model was trained on
@@ -111,7 +112,9 @@ if len(idxs) > 0:
         cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX,
                     0.5, color, 2)
         final_classID = classIDs
+
+yimage_conf_out()
 # show the output image
-cv2.imshow("Image", image)
-cv2.waitKey(0)
+#cv2.imshow("Image", image)
+#cv2.waitKey(0)
 ##print(final_classID)
