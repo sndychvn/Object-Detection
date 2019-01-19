@@ -114,4 +114,4 @@ if len(idxs) > 0:
 # show the output image
 cv2.imshow("Image", image)
 cv2.waitKey(0)
-print(final_classID)
+##print(final_classID)
