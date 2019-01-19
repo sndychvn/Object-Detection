@@ -3,7 +3,7 @@ import cv2
 import os
 import numpy as np
 import time
-from output_config import Count
+from output_config_image import Count
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required=True, help="Path to the image")
