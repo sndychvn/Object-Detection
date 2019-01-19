@@ -113,8 +113,8 @@ if len(idxs) > 0:
                     0.5, color, 2)
         final_classID = classIDs
 
-yimage_conf_out()
+Count.yimage_conf_out(final_classID)
 # show the output image
-#cv2.imshow("Image", image)
-#cv2.waitKey(0)
-##print(final_classID)
+cv2.imshow("Image", image)
+cv2.waitKey(0)
+#print(final_classID)
