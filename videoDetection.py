@@ -48,7 +48,7 @@ ln = [ln[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 vs = cv2.VideoCapture(args["input"])
 writer = None
 (W, H) = (None, None)
-
+fin_classIDs = []
 # try to determine the total number of frames in the video file
 try:
 	prop = cv2.cv.CV_CAP_PROP_FRAME_COUNT if imutils.is_cv2() \
@@ -93,9 +93,11 @@ while True:
 	confidences = []
 	classIDs = []
 
+
 	# loop over each of the layer outputs
 	for output in layerOutputs:
 		# loop over each of the detections
+
 		for detection in output:
 			# extract the class ID and confidence (i.e., probability)
 			# of the current object detection
@@ -124,9 +126,15 @@ while True:
 				boxes.append([x, y, int(width), int(height)])
 				confidences.append(float(confidence))
 				classIDs.append(classID)
+				fin_classIDs.append(classIDs)
+				#print(classIDs)
+
+
 
 	# apply non-maxima suppression to suppress weak, overlapping
 	# bounding boxes
+
+	print(fin_classIDs)
 	idxs = cv2.dnn.NMSBoxes(boxes, confidences, args["confidence"], args["threshold"])
 
 	# ensure at least one detection exists
@@ -161,7 +169,7 @@ while True:
 
 	# write the output frame to disk
 	writer.write(frame)
-
+print(fin_classIDs)
 # release the file pointers
 print("[INFO] cleaning up...")
 writer.release()

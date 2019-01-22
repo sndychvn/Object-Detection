@@ -18,7 +18,6 @@ class Count:
             cobj = Counter(final)
             print(cobj[ind])
             # print(cobj[final[0]])
-
             # if (obj9[final[0]])
 
 
