@@ -1,7 +1,9 @@
-venv
+venv/
 .DS_Store
 .idea
-videos
-images
+videos/
+images/
 *.mp4
 yolo-coco
+__pycache__/
+output/

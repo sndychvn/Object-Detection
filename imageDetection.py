@@ -14,7 +14,7 @@ args = vars(ap.parse_args())
 
 image = cv2.imread(args["image"])
 
-#cv2.imshow("image", image)
+# cv2.imshow("image", image)
 # cv2.waitKey(0)
 
 # load the COCO class labels our YOLO model was trained on
