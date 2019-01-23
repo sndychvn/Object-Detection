@@ -134,7 +134,7 @@ while True:
 	# apply non-maxima suppression to suppress weak, overlapping
 	# bounding boxes
 
-	print(fin_classIDs)
+	#print(fin_classIDs)
 	idxs = cv2.dnn.NMSBoxes(boxes, confidences, args["confidence"], args["threshold"])
 
 	# ensure at least one detection exists
