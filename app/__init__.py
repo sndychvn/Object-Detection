@@ -17,25 +17,34 @@ def allowed_file(filename):
 
 @app.route('/', methods=['get'])
 def index():
-    return render_template('index.html')
+    with open('Object_Number.txt', 'r') as f:
+        file = f.readlines()
+        lines = [line.rstrip('\n') for line in file]
+    return render_template('index.html', tags=lines, index=0)
 
 
 @app.route('/upload', methods=['post'])
 def upload():
+    # get choices
+    ids = request.form.getlist('choices')
+
+    # create uploaded file container
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
+
     # check if the post request has the file part
     if 'file' not in request.files:
-        flash('No file part')
-        return render_template('index.html')
+        return index()
     file = request.files['file']
+
     # if user does not select file, browser also
     # submit an empty part without filename
     if file.filename == '':
-        flash('No selected file')
-        return render_template('index.html')
+        return index()
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         print(app.config['UPLOAD_FOLDER'], filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        return render_template('index.html')
+        print()
+        # TODO detect
+        return index()
