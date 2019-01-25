@@ -1,9 +1,13 @@
 from flask import Flask, request, render_template
 import os
 from werkzeug.utils import secure_filename
+import cv2
+from base64 import b64encode
+
+from . import detector
 
 UPLOAD_FOLDER = './uploads'
-ALLOWED_EXTENSIONS = set(['mp4', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+ALLOWED_EXTENSIONS = set(['mp4', 'png', 'jpg', 'jpeg'])
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -44,7 +48,10 @@ def upload():
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         print(app.config['UPLOAD_FOLDER'], filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        print()
-        # TODO detect
-        return index()
+        path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(path)
+        image = detector.detecte_img(path, ids)
+        retval, buffer = cv2.imencode('.jpg', image)
+        jpg_as_text = b64encode(buffer).decode()
+        return render_template('image.html', image=jpg_as_text)
+

@@ -1,8 +1,8 @@
 #from ImageDetection import final_classID
 from collections import Counter
 
-class Count:
 
+class Count:
     def yimage_conf_out(final):
 
         object_name = ['motorbike', 'person', 'bus', 'truck', 'bicycle', 'car']
