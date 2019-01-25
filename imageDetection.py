@@ -112,7 +112,8 @@ if len(idxs) > 0:
         cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX,
                     0.5, color, 2)
         final_classID = classIDs
-
+print(classIDs)
+print(final_classID)
 Count.yimage_conf_out(final_classID)
 # show the output image
 cv2.imshow("Image", image)
